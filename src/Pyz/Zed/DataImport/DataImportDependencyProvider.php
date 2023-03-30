@@ -444,6 +444,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CombinedProductOfferValidityDataImportPlugin(),
             new CombinedProductOfferStockDataImportPlugin(),
             new ProductConfigurationDataImportPlugin(),
+
+            new AntelopeDataImportPlugin(),
         ];
     }
 
