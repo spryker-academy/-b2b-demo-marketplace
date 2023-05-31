@@ -7,6 +7,10 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\CloseMerchantOrderItemCommandPlugin;
+use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\ReturnMerchantOrderItemCommandPlugin;
+use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms\Condition\IsOrderPaidConditionPlugin;
+use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms\CreateMerchantOrdersCommandPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\Oms\AvailabilityReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\DummyPayment\Communication\Plugin\Oms\Command\RefundPlugin;
@@ -74,7 +78,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $conditionCollection->add(new IsOrderPaidConditionPlugin(), 'MerchantSalesOrder/IsOrderPaid');
             $conditionCollection->add(new IsMerchantPaidOutConditionPlugin(), 'SalesPaymentMerchant/IsMerchantPaidOut');
             $conditionCollection->add(new IsMerchantPayoutReversedConditionPlugin(), 'SalesPaymentMerchant/IsMerchantPayoutReversed');
-
+            $conditionCollection->add(new IsAuthorizedConditionPlugin()     , 'Oms/IsAuthorized');
             return $conditionCollection;
         });
 
@@ -87,6 +91,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     protected function getReservationPostSaveTerminationAwareStrategyPlugins(): array
     {
         return [
+            new ProductOfferReservationPostSaveTerminationAwareStrategyPlugin(),
             new ReservationVersionPostSaveTerminationAwareStrategyPlugin(),
             new AvailabilityReservationPostSaveTerminationAwareStrategyPlugin(),
             new ProductBundleReservationPostSaveTerminationAwareStrategyPlugin(),
@@ -157,10 +162,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return $container;
     }
 
-
-
-
-
     /**
      * @return array<\Spryker\Zed\OmsExtension\Dependency\Plugin\TimeoutProcessorPluginInterface>
      */
@@ -217,9 +218,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SalesMerchantCommissionCalculationCommandByOrderPlugin(), 'MerchantCommission/Calculate');
             $commandCollection->add(new MerchantPayoutCommandByOrderPlugin(), 'SalesPaymentMerchant/Payout');
             $commandCollection->add(new MerchantPayoutReverseCommandByOrderPlugin(), 'SalesPaymentMerchant/ReversePayout');
-            // TODO-1: Add the PayCommandPlugin to the command collection and use the same name as in the State Machine definition
-            // Hint-1: Use the same exact same string, including the slash.
-
+            $commandCollection->add(new PayCommandPlugin(), 'Payment/Pay');
             return $commandCollection;
         });
 
