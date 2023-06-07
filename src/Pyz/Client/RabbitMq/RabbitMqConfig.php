@@ -171,6 +171,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductConfigurationStorageConfig::PRODUCT_CONFIGURATION_SYNC_STORAGE_QUEUE,
             SearchHttpConfig::SEARCH_HTTP_CONFIG_SYNC_QUEUE,
             AntelopeSearchConfig::ANTELOPE_SYNC_SEARCH_QUEUE,
+            AntelopeSearchConfig::ANTELOPE_SYNC_SEARCH_QUEUE,
 ];
     }
 

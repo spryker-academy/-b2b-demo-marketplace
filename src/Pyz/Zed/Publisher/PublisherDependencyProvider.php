@@ -191,7 +191,20 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductAbstractPageSearchPlugins(),
             $this->getProductOfferAvailabilityStoragePlugins(),
             $this-> getAntelopeSearchPlugins(),
+            $this->getAntelopeSearchPlugins(),
         );
+    }
+
+    /**
+     * @return array<array>
+     */
+    public function getAntelopeSearchPlugins(): array
+    {
+        return [
+            AntelopeSearchConfig::ANTELOPE_PUBLISH_SEARCH_QUEUE => [
+                new AntelopeWritePublisherPlugin(),
+            ],
+        ];
     }
 
     /**

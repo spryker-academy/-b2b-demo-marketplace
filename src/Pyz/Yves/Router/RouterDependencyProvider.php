@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\Router;
 
+use Pyz\Yves\AntelopePage\Plugin\Router\AntelopePageRouteProviderPlugin;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Pyz\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use Pyz\Yves\TrainingPage\Plugin\Router\TrainingPageRouteProviderPlugin;
