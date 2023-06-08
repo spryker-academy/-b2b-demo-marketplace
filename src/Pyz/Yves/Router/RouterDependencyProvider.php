@@ -10,7 +10,6 @@ namespace Pyz\Yves\Router;
 use Pyz\Yves\AntelopePage\Plugin\Router\AntelopePageRouteProviderPlugin;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Pyz\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
-use Pyz\Yves\TrainingPage\Plugin\Router\TrainingPageRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\SslPostAddRouteManipulatorPlugin;
@@ -46,7 +45,6 @@ use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlu
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
-use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\Router\MerchantProductOfferWidgetRouteProviderPlugin;
 use SprykerShop\Yves\MerchantRelationRequestPage\Plugin\Router\MerchantRelationRequestPageRouteProviderPlugin;
 use SprykerShop\Yves\MerchantRelationshipPage\Plugin\Router\MerchantRelationshipPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
@@ -145,14 +143,13 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ConfigurableBundlePageRouteProviderPlugin(),
             new ConfigurableBundleNoteWidgetRouteProviderPlugin(),
             new OrderCustomReferenceWidgetRouteProviderPlugin(),
-            new MerchantProductOfferWidgetRouteProviderPlugin(),
             new SalesReturnPageRouteProviderPlugin(),
             new OrderCancelWidgetRouteProviderPlugin(),
             new PaymentPageRouteProviderPlugin(),
             new ProductConfiguratorGatewayPageRouteProviderPlugin(),
             new MerchantRelationRequestPageRouteProviderPlugin(),
             new MerchantRelationshipPageRouteProviderPlugin(),
-            new TrainingPageRouteProviderPlugin(),
+            new AntelopePageRouteProviderPlugin(),
         ];
     }
 
