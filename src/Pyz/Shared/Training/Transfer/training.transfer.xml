@@ -8,6 +8,14 @@
         <property name="name" type="string" />
     </transfer>
 
-    <!-- add more transfers here -->
+    <transfer name="AntelopeCriteria">
+        <property name="name" type="string" />
+    </transfer>
+
+    <transfer name="AntelopeResponse">
+        <property name="antelope" type="Antelope" />
+        <property name="isSuccessful" type="bool" />
+    </transfer>
+
 
 </transfers>
